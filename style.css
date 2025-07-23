@@ -1,0 +1,386 @@
+/* CSS Variables & Reset */
+:root {
+    --background: #303030;
+    --primary: #C62BE0;
+    --neutral1: #ffffff;
+    --neutral2: #979797;
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--neutral1);
+    font-family: var(--font-family);
+    overflow-x: hidden;
+}
+
+.btn {
+    display: inline-flex; /* Menggunakan inline-flex agar icon dan teks rapi */
+    align-items: center;
+    gap: 0.5rem; /* Jarak antara teks dan ikon */
+    background-color: transparent;
+    color: var(--primary);
+    border: 1.2px solid var(--primary);
+    padding: 12px 24px;
+    border-radius: 50px; /* Membuat bentuk pil */
+    text-decoration: none;
+    font-weight: 200;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/* Header & Intro Section */
+header {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 90px;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background);
+    z-index: 1000;
+    padding: 1rem 0; /* Atur padding vertikal di sini */
+}
+
+.navbar-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Properti kunci untuk alignment */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--neutral2);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--neutral2);
+    text-decoration: none;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.nav-links a:hover {
+    border-color: var(--primary);
+}
+
+.intro-content {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.intro-text {
+    flex-basis: 55%;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    color: var(--neutral1);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.intro-image {
+    flex-basis: 35%;
+}
+
+.intro-image img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 4px;
+}
+
+
+/* Marquee Slider */
+.marquee {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 40px 0;
+    overflow: hidden;
+    display: flex; /* Use flexbox for continuous scroll */
+    gap: 2rem; /* The space between text blocks */
+}
+
+.marquee-group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem; /* The space between text blocks */
+    min-width: 100%;
+    animation: scroll 20s linear infinite;
+}
+
+.marquee-group span {
+    font-size: 2rem;
+    font-weight: 200;
+    white-space: nowrap;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 2rem)); /* Move one group width + gap */
+    }
+}
+
+
+/* Work Section */
+#work {
+    width: 90%;
+    max-width: 1200px;
+    margin: 5rem auto;
+}
+
+#work h2 {
+    font-size: 1.4rem;
+    font-weight: 200;
+    margin-bottom: 3rem;
+}
+
+.work-grid {
+    display: grid;
+    gap: 4rem;
+}
+
+/* Mengatur wadah utama setiap proyek */
+.project-card {
+    display: grid;
+    grid-template-columns: 45% 55%; /* Default: image di kiri, info di kanan */
+    gap: 3rem;
+    align-items: center;
+}
+
+.project-card.reverse {
+    grid-template-columns: 55% 45%; /* Reverse: info di kiri, image di kanan */
+    grid-template-areas: "info image";
+}
+
+.project-image {
+    width: 100%;
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+.project-info {
+    width: 100%;
+}
+
+.project-info h3 {
+    font-size: 0.9rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+    color: var(--neutral1);
+    text-transform: uppercase;
+}
+
+.project-info p {
+    font-size: 1.1rem;
+    color: var(--neutral1);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.project-tags span {
+    color: var(--neutral2);
+    font-size: 0.9rem;
+}
+
+/* Membuat teks rata kanan khusus untuk kartu proyek yang terbalik */
+.project-card.reverse .project-info {
+    text-align: right;
+}
+
+/* Membuat tags juga rata kanan di dalam wadahnya */
+.project-card.reverse .project-tags {
+    justify-content: flex-end;
+}
+
+.view-work-btn i {
+    transition: transform 0.3s;
+}
+.view-work-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Footer Section */
+.marquee.marquee-secondary {
+    background: var(--neutral1);
+    color: var(--background);
+}
+.marquee.marquee-secondary .marquee-content {
+     animation-duration: 15s; /* slightly different speed */
+}
+
+
+footer {
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+footer h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+footer p {
+    color: var(--neutral2);
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: var(--neutral2);
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: var(--neutral1);
+}
+
+/* Tooltip on Hover */
+.icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary);
+    color: var(--neutral1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.footer-credit {
+    font-size: 1rem;
+    color: var(--neutral2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo {
+    font-size: 1.2rem; /* Ukuran font logo diperkecil di mobile */
+    }
+
+    .intro-content {
+    flex-direction: column-reverse; /* Membalik urutan, gambar menjadi di atas */
+    gap: 2rem;
+    flex-grow: 0;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    /*PROJECT CARD (GRID VERSION) */
+    .project-card,
+    .project-card.reverse {
+        display: grid !important;
+        grid-template-columns: 100% !important;
+        grid-template-areas: "image" "info" !important;
+        gap: 2rem;
+    }
+
+    .project-image {
+        grid-area: image;
+        width: 100%;
+    }
+
+    .project-info {
+        grid-area: info;
+        width: 100%;
+        text-align: center;
+    }
+
+    .project-card.reverse .project-info {
+    text-align: center; /* Paksa kembali menjadi rata tengah di mobile */
+    }
+
+    .project-tags,
+    .project-card.reverse .project-tags {
+    justify-content: center;
+    }
+}
